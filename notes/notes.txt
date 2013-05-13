@@ -1,0 +1,57 @@
+# https://docs.djangoproject.com/en/1.5/intro/tutorial01/
+
+# Python already installed
+
+# Install pip if not already installed
+term=> cd ~
+term=> curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+term=> sudo python get-pip.py
+
+# Install  Django
+term=> sudo pip install Django
+
+# Verify django version
+term=> python -c "import django; print(django.get_version())"
+
+# Create a new git repository, with a base README file
+https://github.com/crfulbright/links.git
+
+# Clone the base repo
+term=> cd /Users/CFulbright/code_personal
+term=> git clone https://github.com/crfulbright/links.git
+
+# Create a django project
+term=> cd /Users/CFulbright/code_personal/links
+term=> django-admin.py startproject django_links
+
+# Run and test the devlopment server
+term=> cd django_links/
+term=> python manage.py runserver
+# Navigate to:
+http://127.0.0.1:8000/
+
+# Create a directory for SQLite3 DB (dev DB)
+term=> cd ..
+term=> mkdir dev_sqlite_db
+# Update settings.py
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': '/Users/CFulbright/code_personal/links/dev_sqlite_db/dev_db.db',
+
+# syncdb to create DB
+term=> cd /Users/CFulbright/code_personal/links/django_links/
+term=> python manage.py syncdb
+# cfulbright / chris.fulbright@gmail.com / test1234
+
+# Verify the SQLite3 schema was created
+term=> cd ../dev_sqlite_db/
+term=> sqlite3 dev_db.db
+sqlite=> .schema
+sqlite=> .exit
+
+# Create app - 'userLinks'
+term=> /Users/CFulbright/code_personal/links/django_links
+term=> python manage.py startapp userLinks
+
+# LEFT OFF HERE...
+# Creating models¶
+
